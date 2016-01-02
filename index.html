@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Pegs</title>
+	
+	<style type="text/css">
+		
+		.inline-block{
+			display: inline-block;	
+		}
+
+		.pc70{
+			width: 69%;
+			vertical-align: top;
+		}
+
+		.pc30{
+			width: 30%;
+			vertical-align: top;
+		}
+
+		.clickable:hover{
+			color: grey;
+			cursor: pointer;
+		}
+
+		.peg-pack{
+			padding-left: 20px;
+			margin-bottom: 10px;
+			margin-top: 5px;
+			display: none;
+		}
+
+
+	</style>
+
+	<script src="jquery.js"></script>
+
+</head>
+<body>
+
+	<div id="left-panel" class="inline-block pc30">
+		<div>
+			<div class="dizaine clickable">0-9</div>
+			<div class="peg-pack" id="0-9"></div>
+			<div class="dizaine clickable">00-09</div>
+			<div class="peg-pack" id="00-09"></div>
+			<div class="dizaine clickable">10-19</div>
+			<div class="peg-pack" id="10-19"></div>
+			<div class="dizaine clickable">20-29</div>
+			<div class="peg-pack" id="20-29"></div>
+			<div class="dizaine clickable">30-39</div>
+			<div class="peg-pack" id="30-39"></div>
+			<div class="dizaine clickable">40-49</div>
+			<div class="peg-pack" id="40-49"></div>
+			<div class="dizaine clickable">50-59</div>
+			<div class="peg-pack" id="50-59"></div>
+			<div class="dizaine clickable">60-69</div>
+			<div class="peg-pack" id="60-69"></div>
+			<div class="dizaine clickable">70-79</div>
+			<div class="peg-pack" id="70-79"></div>
+			<div class="dizaine clickable">80-89</div>
+			<div class="peg-pack" id="80-89"></div>
+			<div class="dizaine clickable">90-99</div>
+			<div class="peg-pack" id="90-99"></div>
+		</div>
+	</div>
+
+	<div id="right-panel" class="inline-block pc70">
+
+	</div>
+
+	<script type="text/javascript">
+
+		var data = [
+			{"0-9" : ["-0 - Sea.jpg", "-1 - Yeti.jpg", "-2 - Neo.jpg", "-3 - Emma.png", "-4 - War.jpg", "-5 - WallE.jpg", "-6 - Ashe.jpg", "-7 - Cow.jpg", "-8 - Eve.jpg", "-9 - Pooh.jpg"]},
+			{"00-09" : ["00 - Zeus.jpg", "01 - Seth.jpg", "02 - Asian.jpg", "03 - Sumo.jpeg", "04 - Zorro.jpg", "05 - Seal.jpeg", "06 - Sacha.jpeg", "07 - Sikh.jpg", "08 - Sophie.jpg", "09 - Spy.jpeg"]},
+			{"10-19" : ["10 - Taz.jpeg", "11 - Death.jpg", "12 - Diana.jpg", "13 - Tim.jpeg", "14 - Hydra.png", "15 - Dali.jpg", "16 - Hitch.png", "17 - Dog.jpg", "18 - Diva.jpg", "19 - Dobby.jpg"]},
+			{"20-29" : ["20 - Nazi.jpg", "21 - Ent.jpg", "22 - Nun.jpg", "23 - Nemo.jpg", "24 - Henry.jpg", "25 - Neil.jpg", "26 - Nash.jpg", "27 - Inca.jpg", "28 - Nova.jpg", "29 - Gungan.jpg"]},
+			{"30-39" : ["30 - Moose.jpg", "31 - Maid.jpg", "32 - Minnie.jpeg", "33 - Imam.jpg", "34 - Homer.png", "35 - Mule.jpg", "36 - Mage.jpg", "37 - Mike.jpeg", "38 - Mafia.jpg", "39 - Moby.jpg"]},
+			{"40-49" : ["40 - Horus.jpeg", "41 - Rat.jpg", "42 - Ron.jpg", "43 - Worm.jpeg", "44 - Warrior.jpeg", "45 - Aurele.jpeg", "46 - Raj.jpg", "47 - Rogue.jpeg", "48 - Harvey.jpg", "49 - Ruby.jpeg"]},
+			{"50-59" : ["50 - Lucy.jpg", "51 - Leto.jpg", "52 - Lion.jpg", "53 - Lama.jpeg", "54 - Lawyer.png", "55 - Leeloo.jpg", "56 - Luigi.png", "57 - Luke.jpg", "58 - Elf.jpg", "59 - Alba.jpg"]},
+			{"60-69" : ["60 - Jesus.jpg", "61 Cheetah.jpeg", "62 - John.jpeg", "63 - Jamie.jpg", "64 - Usher.jpg", "65 - Julie.jpeg", "66 - Juge.jpeg", "67- Jockey.jpg", "68 - Chef.jpg", "69 - Jabba.jpeg"]},
+			{"70-79" : ["70 - Goose.jpeg", "71 - Cat.jpg", "72 - Ken.jpg", "73 - Kim.jpg", "74 - Crow.jpg", "75 - Eagle.jpg", "76 - Cash.jpeg", "77 - Cook.JPG", "78 - Goofy.gif", "79 - Gab.jpg"]},
+			{"80-89" : ["80 - Hives.jpeg", "81 - Voodoo.jpeg", "82 - Faun.jpg", "83 - Foam.jpg", "84 - Pharaoh.jpg", "85 - Eiffel.jpg", "86 - Fish.jpg", "87 - Fag.jpg", "88 - Five.jpg", "89 - Phoebe.jpg"]},
+			{"90-99" : ["90 - Bas.jpg", "91 - Buddha.jpg", "92 - Bunny.jpg", "93 - Bum.jpg", "94 - Bear.jpeg", "95 - Bull.jpeg", "96 - Apache.jpg", "97 - Pig.jpg", "98 - Beef.jpg", "99 - Popeye.jpg"]}
+		];
+
+		for (var i = 0; i < data.length; i++) {
+			var bundle = data[i];
+			for (var key in bundle) {
+				for (var j = 0; j < bundle[key].length; j++) {
+					var name = bundle[key][j].replace('.jpg', '').replace('.jpeg', '').replace('.png', '').replace('.JPG', '').replace('.gif', '');
+					var dom = "<div class='clickable peg'>"+ name +"</div>";
+					$('#'+key).append(dom);
+				}
+			}
+		}
+
+		$(".peg").click(function(){
+			selectPeg(this.innerHTML);
+		});
+
+		$(".dizaine").click(function(){
+			$('#'+this.innerHTML).slideToggle();
+		});
+
+		function selectPeg(label){
+			for (var i = 0; i < data.length; i++) {
+				var bundle = data[i];
+				for (var key in bundle) {
+					for (var j = 0; j < bundle[key].length; j++) {
+						var name = bundle[key][j].replace('.jpg', '').replace('.jpeg', '').replace('.png', '').replace('.JPG', '').replace('.gif', '');
+						if(label === name){
+							insertPeg(key + "/" + bundle[key][j], label);
+						}
+					}
+				}
+			}
+		}
+
+		function insertPeg(url, name){
+			$("#image").remove();
+			$("#image-title").remove();
+			$("#right-panel").append("<h1 id='image-title'>" + name + "</h1>");
+			$("#right-panel").append("<img id='image' src='" + url + "'></img>");
+		}
+
+	</script>
+
+</body>
+</html>
